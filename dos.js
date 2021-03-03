@@ -20,7 +20,10 @@ let contadorTrabajando = 0;
 let sumaNotaPromedioSoloEstudia = 0;
 let sumaNotaPromedioTrabajando = 0;
 let sumaNotaPromedioBuscando = 0;
-
+let flagL = 0;
+let menorCantidadM; 
+let menorNombre;
+let menorEdad; 
 
 do {
   
@@ -114,7 +117,21 @@ do {
       nombreViejo = nombre;
     }
 
-  
+  if (situacionLaboral == "buscando" && flagL == 0 ) {
+    
+      menorCantidadM = cantidadMaterias
+      menorNombre = nombre
+      menorEdad = edad
+      flagL = 1
+  }
+
+  if (flagL == 1 && cantidadMaterias < menorCantidadM && situacionLaboral == "buscando"  ) {
+    
+    menorCantidadM = cantidadMaterias
+    menorNombre = nombre
+    menorEdad = edad
+
+  }
   
   pregunta = prompt(`Desea ingresar mas datos? s/n`)
 
@@ -160,6 +177,15 @@ if (contadorSoloEstudia != 0) {
 else{
 
   console.log("c) No hay datos para responder")
+}
+
+if (flagL != 0) {
+  console.log("c) La persona que esta buscando trabajo y tiene la menor cantidad de materias se llama" + menorNombre + " y su edad es " + menorEdad)
+
+}
+else{
+
+  console.log("d) No hay datos para responder")
 }
 
 
